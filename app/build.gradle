@@ -1,0 +1,154 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.dingqiqi.baseframework"
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        r {
+//            storeFile file(CERT_NAME)
+//            storePassword "111"
+//            keyAlias "lakalacloudpos"
+//            keyPassword "111"
+        }
+        d {
+//            storeFile file(CERT_NAME)
+//            storePassword "111"
+//            keyAlias "lakalacloudpos"
+//            keyPassword "111"
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+            resources.srcDirs = ['src/main/java', 'src/main/aidl']
+            aidl.srcDirs = ['src/main/aidl']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+
+//        Proc {
+//            assets.srcDirs = ['src/main/assets_release']
+//        }
+//
+//        Test_in {
+//            assets.srcDirs = ['src/main/assets_debug']
+//        }
+//
+//        Test_out {
+//            assets.srcDirs = ['src/main/assets_debug']
+//        }
+    }
+
+    buildTypes {
+        release {
+            //对齐
+            zipAlignEnabled true
+            //signingConfig signingConfigs.r
+            //混淆开关
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            zipAlignEnabled false
+            //signingConfig signingConfigs.d
+            minifyEnabled false
+        }
+    }
+
+    productFlavors {
+        Proc {
+            buildConfigField "String", "URL_IMAGE_LIST", "\"http://www.tngou.net/tnfs/api/list\""
+            buildConfigField "String", "URL_IMAGE_SHOW", "\"http://tnfs.tngou.net/image\""
+            buildConfigField "boolean", "LOG", "false"
+        }
+
+        Test_out {
+            buildConfigField "String", "URL_IMAGE_LIST", "\"http://www.tngou.net/tnfs/api/list\""
+            buildConfigField "String", "URL_IMAGE_SHOW", "\"http://tnfs.tngou.net/image\""
+            buildConfigField "boolean", "LOG", "true"
+        }
+
+        Test_in {
+            buildConfigField "String", "URL_IMAGE_LIST", "\"http://www.tngou.net/tnfs/api/list\""
+            buildConfigField "String", "URL_IMAGE_SHOW", "\"http://tnfs.tngou.net/image\""
+            buildConfigField "boolean", "LOG", "true"
+        }
+    }
+
+    //修改生成的文件名
+//    applicationVariants.all { variant ->
+//        def time = new java.text.SimpleDateFormat("yyyyMMdd").format(new Date())
+//        variant.outputs.each { output ->
+//            def file = output.outputFile
+//            def fileName = PROJECT_NAME + "_" + variant.productFlavors[0].name + "_V" + defaultConfig.versionName + "_" + time + ".apk"
+//            output.outputFile = new File(file.parent, fileName)
+//        }
+//    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}
+
+build {
+    doLast {
+       // tasks.copyTaskWithPatterns.execute()
+    }
+}
+
+
+task copyTaskWithPatterns(type: Copy) {
+    def versionName = android.defaultConfig.versionName
+    from "${buildDir}/outputs/apk/"
+    into RELEASE_DIR + PRODUCT_NAME + "/" + versionName
+
+    // 不拷贝未签名的文件.
+    exclude { details ->
+        details.file.name.contains('unaligned') ||
+                details.file.name.contains('unsigned') ||
+                !details.file.name.contains(versionName)
+    }
+    include "**/*.apk"
+}
+
+task renameOut(type: Copy) {
+    def versionName = android.defaultConfig.versionName
+    from "../release/" + versionName
+    into "../release/" + versionName
+    rename { String fileName ->
+        if (fileName.contains(PROJECT_NAME)) {
+            fileName.replace(PROJECT_NAME, PRODUCT_NAME)
+        }
+    }
+}
+task makePretty(type: Delete) {
+    def versionName = android.defaultConfig.versionName
+    FileTree tree = fileTree(dir: "../release/" + versionName);
+    tree.each { File file ->
+        if (!file.name.contains(PRODUCT_NAME)) {
+            delete(file)
+        }
+    }
+}

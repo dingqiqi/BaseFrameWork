@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/pub_padding_default"
+    android:paddingRight="@dimen/pub_padding_default" >
+
+    <LinearLayout
+        android:id="@+id/ll_parent_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_notify_dialog"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/ll_top_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/title_template"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_title_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/pub_margin_mini"
+                    android:scaleType="centerInside"
+                    android:src="@null" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/pub_margin_small"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="#FF00B4EF"
+                    android:textSize="@dimen/pub_text_size_slightly" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/v_title_divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dialog_line_cl"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/pub_padding_small" >
+
+            <TextView
+                android:id="@+id/tv_message"
+                style="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_custom_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/pub_margin_small"
+            android:paddingRight="@dimen/pub_margin_small" >
+
+            <Button
+                android:id="@+id/btn_negative"
+                style="@style/notify_dialog_btn"
+                android:layout_marginRight="@dimen/pub_margin_small"
+                android:text="@string/cancel"
+                android:textColor="@drawable/blue_textcolor"
+                android:background="@drawable/selector_notify_right_btn"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_positive"
+                style="@style/notify_dialog_btn"
+                android:text="@string/confirm"
+                android:textColor="@drawable/blue_textcolor"
+                android:background="@drawable/selector_notify_left_btn"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

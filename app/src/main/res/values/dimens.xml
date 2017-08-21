@@ -1,0 +1,37 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+
+    <!-- 公共的padding值 -->
+    <dimen name="pub_padding_mini">5dp</dimen>
+    <dimen name="pub_padding_small">10dp</dimen>
+    <dimen name="pub_padding_medium">12dp</dimen>
+    <dimen name="pub_padding_default">15dp</dimen>
+    <dimen name="pub_padding_slightly">20dp</dimen>
+    <dimen name="pub_padding_large">25dp</dimen>
+    <dimen name="pub_padding_largest">30dp</dimen>
+    <dimen name="pub_padding_super">35dp</dimen>
+
+    <!-- 公共的margin值 -->
+    <dimen name="pub_margin_mini">5dp</dimen>
+    <dimen name="pub_margin_small">10dp</dimen>
+    <dimen name="pub_margin_medium">12dp</dimen>
+    <dimen name="pub_margin_default">15dp</dimen>
+    <dimen name="pub_margin_slightly">20dp</dimen>
+    <dimen name="pub_margin_large">25dp</dimen>
+    <dimen name="pub_margin_largest">30dp</dimen>
+    <dimen name="pub_margin_super">35dp</dimen>
+
+    <!-- 公共字体大小 -->
+    <dimen name="pub_text_size_mini">10sp</dimen>
+    <dimen name="pub_text_size_small">12sp</dimen>
+    <dimen name="pub_text_size_medium">14sp</dimen>
+    <dimen name="pub_text_size_default">16sp</dimen>
+    <dimen name="pub_text_size_slightly">18sp</dimen>
+    <dimen name="pub_text_size_large">20sp</dimen>
+    <dimen name="pub_text_size_largest">25sp</dimen>
+    <dimen name="pub_text_size_super">30sp</dimen>
+    <dimen name="pub_text_size_super2">35sp</dimen>
+    <dimen name="pub_text_size_superbig">60sp</dimen>
+
+</resources>

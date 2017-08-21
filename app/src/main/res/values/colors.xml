@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- dialog分割线 -->
+    <color name="dialog_line_cl">#ed503a</color>
+    <color name="package_select_line">#FF01B5F0</color>
+    <color name="click_none">#FFB6B6B6</color>
+
+
+    <!-- 通用颜色 -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color><!-- 透明色 -->
+    <color name="yellow">#FFFFFF00</color><!-- 黄色 -->
+    <color name="golden">#F5F30A</color><!-- 金黄色 -->
+    <color name="dimgrey">#696969</color><!-- 暗灰色 -->
+    <color name="gray">#808080</color>	<!-- 灰色 -->
+    <color name="red">#ff0000</color><!-- 红色 -->
+    <color name="green">#00ff00</color><!-- 绿色 -->
+    <color name="blue">#0000ff</color><!-- 蓝色 -->
+    <color name="tra_black_dark">#aa000000</color>	<!-- 黑色透明（较浅） -->
+
+    <drawable name="transparent">#00000000</drawable>
+
+    <!--下拉刷新颜色-->
+    <color name="holo_blue_light">#ff33b5e5</color>
+    <color name="holo_red_light">#ffff4444</color>
+    <color name="holo_orange_light">#ffffbb33</color>
+    <color name="holo_green_light">#ff99cc00</color>
+
+    <!--文字颜色-->
+    <color name="colorText">#77000000</color>
+
+    <color name="colorBlack">#000000</color>
+    <!--线颜色-->
+    <color name="colorLine">#989898</color>
+    <color name="colorWhite">#ffffff</color>
+
+
+</resources>
